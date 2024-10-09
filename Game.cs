@@ -16,7 +16,8 @@ namespace Game10003
         string chosenImage;
 
         // Create a brown color
-        Color Brown = new Color(139, 69, 19, 255); 
+        Color Brown = new Color(139, 69, 19, 255);
+        Color Purple = new Color(128,0,128,255);
 
         /// <summary>
         ///     Setup runs once before the game loop begins.
@@ -30,13 +31,13 @@ namespace Game10003
             imageChoices[0] = "Tree";
             imageChoices[1] = "Car";
             imageChoices[2] = "Plane";
-            imageChoices[4] = "House";
+            imageChoices[3] = "House";
 
             int selection = Random.Integer(0, 3);
             // Console.WriteLine(imageChoices[selection]);
             //chosenImage = imageChoices[selection];
             // For testing purposes
-            chosenImage = imageChoices[1];
+            chosenImage = imageChoices[3];
         }
 
         /// <summary>
@@ -90,11 +91,32 @@ namespace Game10003
                     }
                     else if (imageChoices[i] == "Plane")
                     {
-
+                        Draw.LineColor = Purple;
+                        Draw.Line(400, 100, 450, 50);
+                        Draw.Line(450, 50, 400, 50);
+                        Draw.Line(400, 50, 350, 100);
+                        Draw.Line(350, 100, 250, 100);
+                        Draw.Line(250, 100, 250, 150);
+                        Draw.Line(250, 150, 350, 150);
+                        Draw.Line(350, 150, 400, 200);
+                        Draw.Line(400, 200, 450, 200);
+                        Draw.Line(450, 200, 400, 150);
                     }
-                    else if (imageChoices[i] == "house")
+                    else if (imageChoices[i] == "House")
                     {
+                        Draw.LineColor = Brown;
 
+                        // Door
+                        Draw.Line(400, 300, 350, 300);
+                        Draw.Line(350, 300, 350, 400);
+
+                        // House
+                        Draw.Line(250, 400, 250, 200);
+                        Draw.Line(250,200,400,200);
+                        Draw.Line(250, 400,400, 400);
+
+                        // Roof
+                        Draw.Line(250, 200, 400, 50);
                     }
 
                     // break; // Exit the loop once the matching image is found
