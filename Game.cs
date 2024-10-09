@@ -83,6 +83,21 @@ namespace Game10003
             Draw.Line(250, 200, 400, 50);
         }
 
+        public void captureUserDrawing()
+        {
+            Draw.FillColor = Color.Clear;
+            Draw.LineColor = Color.Black;
+            Draw.LineSize = 5;
+
+            float mouseXStart = Input.GetMouseX();
+            float mouseYStart = Input.GetMouseY();
+            float mouseXEnd = Input.GetMouseDeltaX();
+            float mouseYEnd = Input.GetMouseDeltaY();
+
+            Draw.Line(mouseXStart,mouseYStart, mouseXEnd, mouseYEnd);
+
+        }
+
         /// <summary>
         ///     Setup runs once before the game loop begins.
         /// </summary>
@@ -125,18 +140,22 @@ namespace Game10003
                     if (imageChoices[i] == "Tree")
                     {
                         drawTree();
+                        captureUserDrawing();
                     } 
                     else if (imageChoices[i] == "Car")
                     {
                         drawCar();
+                        captureUserDrawing();
                     }
                     else if (imageChoices[i] == "Plane")
                     {
                         drawPlane();
+                        captureUserDrawing();
                     }
                     else if (imageChoices[i] == "House")
                     {
                         drawHouse();
+                        captureUserDrawing();
                     }
                 }
             }
