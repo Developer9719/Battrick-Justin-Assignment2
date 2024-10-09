@@ -15,6 +15,13 @@ namespace Game10003
         string[] imageChoices = new string[5];
         string chosenImage;
 
+        // User draws
+        float mouseXStart;
+        float mouseYStart;
+        float mouseXEnd;
+        float mouseYEnd;
+        float[] lineCoordinates;
+
         // Create a brown color
         Color Brown = new Color(139, 69, 19, 255);
         Color Purple = new Color(128,0,128,255);
@@ -83,21 +90,6 @@ namespace Game10003
             Draw.Line(250, 200, 400, 50);
         }
 
-        public void captureUserDrawing()
-        {
-            Draw.FillColor = Color.Clear;
-            Draw.LineColor = Color.Black;
-            Draw.LineSize = 5;
-
-            float mouseXStart = Input.GetMouseX();
-            float mouseYStart = Input.GetMouseY();
-            float mouseXEnd = Input.GetMouseDeltaX();
-            float mouseYEnd = Input.GetMouseDeltaY();
-
-            Draw.Line(mouseXStart,mouseYStart, mouseXEnd, mouseYEnd);
-
-        }
-
         /// <summary>
         ///     Setup runs once before the game loop begins.
         /// </summary>
@@ -135,28 +127,33 @@ namespace Game10003
                 Draw.LineSize = 5;
                 Draw.FillColor = Color.Clear;
 
+                // Draws half the images
                 if (chosenImage == imageChoices[i])
                 {
                     if (imageChoices[i] == "Tree")
                     {
                         drawTree();
-                        captureUserDrawing();
                     } 
                     else if (imageChoices[i] == "Car")
                     {
                         drawCar();
-                        captureUserDrawing();
                     }
                     else if (imageChoices[i] == "Plane")
                     {
                         drawPlane();
-                        captureUserDrawing();
                     }
                     else if (imageChoices[i] == "House")
                     {
                         drawHouse();
-                        captureUserDrawing();
                     }
+
+                    // User Drawings
+                    if (Input.IsMouseButtonPressed(MouseInput.Left))
+                    {
+                        mouseXStart = Input.GetMouseX();
+                        mouseYStart = Input.GetMouseY();
+                    }
+                    Draw.Line(mouseXStart,mouseYStart, Input.GetMouseX(), Input.GetMouseY());
                 }
             }
         }
