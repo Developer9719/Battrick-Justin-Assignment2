@@ -26,6 +26,10 @@ namespace Game10003
             imageChoices[2] = "Plane";
             imageChoices[3] = "Stickman";
             imageChoices[4] = "House";
+
+            int selection = Random.Integer(0, 4);
+            Console.WriteLine(imageChoices[selection]);
+
         }
 
         /// <summary>
@@ -34,6 +38,8 @@ namespace Game10003
         public void Update()
         {
             Window.ClearBackground(Color.White);
+
+
         }
     }
 }
