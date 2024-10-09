@@ -15,6 +15,9 @@ namespace Game10003
         string[] imageChoices = new string[5];
         string chosenImage;
 
+        // Create a brown color
+        Color Brown = new Color(139, 69, 19, 255); 
+
         /// <summary>
         ///     Setup runs once before the game loop begins.
         /// </summary>
@@ -27,12 +30,13 @@ namespace Game10003
             imageChoices[0] = "Tree";
             imageChoices[1] = "Car";
             imageChoices[2] = "Plane";
-            imageChoices[3] = "Stickman";
             imageChoices[4] = "House";
 
-            int selection = Random.Integer(0, 4);
+            int selection = Random.Integer(0, 3);
             // Console.WriteLine(imageChoices[selection]);
-            chosenImage = imageChoices[selection];
+            //chosenImage = imageChoices[selection];
+            // For testing purposes
+            chosenImage = imageChoices[0];
         }
 
         /// <summary>
@@ -53,6 +57,22 @@ namespace Game10003
                 {
                     if (imageChoices[i] == "Tree")
                     {
+                        Draw.LineSize = 5;
+
+                        // Trunk
+                        Draw.LineColor = Brown;
+                        Draw.Line(350, 400, 375, 400);
+                        Draw.Line(350, 400, 350, 350);
+
+                        // Leaves
+                        Draw.LineColor = Color.Green;
+                        Draw.Line(350, 350, 250, 350);
+                        Draw.Line(250, 350, 375, 225);
+                        Draw.Line(375, 225, 300, 225);
+                        Draw.Line(300, 225, 375, 150);
+                        Draw.Line(375, 150, 325, 150);
+                        Draw.Line(325, 150, 375, 100);
+
 
                     } 
                     else if (imageChoices[i] == "Car")
@@ -63,16 +83,12 @@ namespace Game10003
                     {
 
                     }
-                    else if (imageChoices[i] == "Stickman")
-                    {
-
-                    }
                     else if (imageChoices[i] == "house")
                     {
 
                     }
 
-                    break; // Exit the loop once the matching image is found
+                    // break; // Exit the loop once the matching image is found
                 }
             }
         }
