@@ -36,7 +36,7 @@ namespace Game10003
             // Console.WriteLine(imageChoices[selection]);
             //chosenImage = imageChoices[selection];
             // For testing purposes
-            chosenImage = imageChoices[0];
+            chosenImage = imageChoices[1];
         }
 
         /// <summary>
@@ -53,12 +53,13 @@ namespace Game10003
 
             for (int i = 0; i < imageChoices.Length; i++)
             {
+                Draw.LineSize = 5;
+                Draw.FillColor = Color.Clear;
+
                 if (chosenImage == imageChoices[i])
                 {
                     if (imageChoices[i] == "Tree")
                     {
-                        Draw.LineSize = 5;
-
                         // Trunk
                         Draw.LineColor = Brown;
                         Draw.Line(350, 400, 375, 400);
@@ -72,12 +73,20 @@ namespace Game10003
                         Draw.Line(300, 225, 375, 150);
                         Draw.Line(375, 150, 325, 150);
                         Draw.Line(325, 150, 375, 100);
-
-
                     } 
                     else if (imageChoices[i] == "Car")
                     {
+                        // Tires
+                        Draw.LineColor = Color.Black;
+                        Draw.Circle(250, 350, 50);
 
+                        // Car Body
+                        Draw.LineColor = Color.Blue;
+                        Draw.Line(450, 350, 150, 350);
+                        Draw.Line(150, 350, 150, 250);
+                        Draw.Line(150, 250, 250, 250);
+                        Draw.Line(250, 250, 250, 150);
+                        Draw.Line(250, 150, 450, 150);
                     }
                     else if (imageChoices[i] == "Plane")
                     {
