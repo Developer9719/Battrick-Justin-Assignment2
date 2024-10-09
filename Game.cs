@@ -1,5 +1,6 @@
 ﻿// Include code libraries you need below (use the namespace).
 using System;
+using System.ComponentModel.Design;
 using System.Numerics;
 
 // The namespace your code is in.
@@ -12,6 +13,7 @@ namespace Game10003
     {
         // Place your variables here:
         string[] imageChoices = new string[5];
+        string chosenImage;
 
         /// <summary>
         ///     Setup runs once before the game loop begins.
@@ -20,6 +22,7 @@ namespace Game10003
         {
             Window.SetTitle("Finish the Image");
             Window.SetSize(800, 600);
+            Window.TargetFPS = 60;
 
             imageChoices[0] = "Tree";
             imageChoices[1] = "Car";
@@ -28,8 +31,8 @@ namespace Game10003
             imageChoices[4] = "House";
 
             int selection = Random.Integer(0, 4);
-            Console.WriteLine(imageChoices[selection]);
-
+            // Console.WriteLine(imageChoices[selection]);
+            chosenImage = imageChoices[selection];
         }
 
         /// <summary>
@@ -39,7 +42,39 @@ namespace Game10003
         {
             Window.ClearBackground(Color.White);
 
+            // Draw the ground
+            Draw.LineColor = Color.Green;
+            Draw.FillColor = Color.Green;
+            Draw.Rectangle(0, 400, 800, 200);
 
+            for (int i = 0; i < imageChoices.Length; i++)
+            {
+                if (chosenImage == imageChoices[i])
+                {
+                    if (imageChoices[i] == "Tree")
+                    {
+
+                    } 
+                    else if (imageChoices[i] == "Car")
+                    {
+
+                    }
+                    else if (imageChoices[i] == "Plane")
+                    {
+
+                    }
+                    else if (imageChoices[i] == "Stickman")
+                    {
+
+                    }
+                    else if (imageChoices[i] == "house")
+                    {
+
+                    }
+
+                    break; // Exit the loop once the matching image is found
+                }
+            }
         }
     }
 }
