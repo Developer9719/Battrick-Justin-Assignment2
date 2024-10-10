@@ -20,7 +20,6 @@ namespace Game10003
         float mouseYStart;
         float mouseXEnd;
         float mouseYEnd;
-        float[] lineCoordinates;
 
         // Create a brown color
         Color Brown = new Color(139, 69, 19, 255);
@@ -78,16 +77,16 @@ namespace Game10003
             Draw.LineColor = Brown;
 
             // Door
-            Draw.Line(400, 300, 350, 300);
-            Draw.Line(350, 300, 350, 400);
+            Draw.Rectangle(350, 300, 50, 100);
 
             // House
-            Draw.Line(250, 400, 250, 200);
-            Draw.Line(250, 200, 400, 200);
-            Draw.Line(250, 400, 400, 400);
+            Draw.Rectangle(250, 200, 150, 200);
 
             // Roof
             Draw.Line(250, 200, 400, 50);
+
+            // Window
+            Draw.Circle(300,250,25);
         }
 
         /// <summary>
@@ -105,9 +104,9 @@ namespace Game10003
             imageChoices[3] = "House";
 
             int selection = Random.Integer(0, 3);
-            chosenImage = imageChoices[selection];
+            //chosenImage = imageChoices[selection];
             // For testing purposes
-            //chosenImage = imageChoices[3];
+            chosenImage = imageChoices[3];
         }
 
         /// <summary>
@@ -147,12 +146,14 @@ namespace Game10003
                         drawHouse();
                     }
 
-                    // User Drawings
+                    // Get user input to draw the other half of the image
                     if (Input.IsMouseButtonPressed(MouseInput.Left))
                     {
+                        // Gets starting coordinates for line
                         mouseXStart = Input.GetMouseX();
                         mouseYStart = Input.GetMouseY();
                     }
+                    // Draws a line with the starting coordinates above and the current mouse position for end points
                     Draw.Line(mouseXStart,mouseYStart, Input.GetMouseX(), Input.GetMouseY());
                 }
             }
